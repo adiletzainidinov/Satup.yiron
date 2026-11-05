@@ -1,5 +1,5 @@
 import {lessons, type Lesson} from "./lessons";
-export type AcademyLesson=Lesson&{chapter:number;contextKy:string;contextRu:string;sourceUrl:string;youtubeUrl:string|null};
+export type AcademyLesson=Omit<Lesson,"choices">&{choices:(Lesson["choices"][number]&{feedbackKy:string})[];titleKy:string;skillKy:string;takeawayKy:string;chapter:number;contextKy:string;contextRu:string;sourceUrl:string;youtubeUrl:string|null};
 const situations=[
 ["Кардар биринчи жолу жазды","Первое сообщение","Саламатсызбы, Куран барбы?"],
 ["Кардар шашып жатат","Клиент торопится","Тезирээк жооп бересизби?"],
