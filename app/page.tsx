@@ -13,6 +13,8 @@ export default function Home(){
  const [showAllLevels,setShowAllLevels]=useState(false);
  const [language,setLanguage]=useState<AcademyLanguage>("ky");
  const t=academyText[language];
+ useEffect(()=>{try{const v=localStorage.getItem("academy_language");if(v==="ky"||v==="ru")setLanguage(v)}catch{}},[]);
+ useEffect(()=>{try{localStorage.setItem("academy_language",language)}catch{}},[language]);
  useEffect(()=>{if(!db){setLoading(false);return}db.auth.getUser().then(({data})=>{setUser(data.user);setLoading(false)});const {data:{subscription}}=db.auth.onAuthStateChange((_event,session)=>{setUser(session?.user??null)});return ()=>subscription.unsubscribe()},[]);
  useEffect(()=>{if(!db||!user){setProgress([]);return}db.from("academy_progress").select("lesson_id,best_score").eq("user_id",user.id).then(({data,error})=>{if(error)setError("Не удалось загрузить прогресс: "+error.message);else setProgress(data||[])})},[user?.id]);
  async function login(){if(!db)return;setError("");const {error}=await db.auth.signInWithOAuth({provider:"google",options:{redirectTo:window.location.origin}});if(error)setError(error.message)}
