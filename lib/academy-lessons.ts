@@ -43,6 +43,6 @@ export const academyLessons:AcademyLesson[]=Array.from({length:100},(_,i)=>{
  const wrong=base.choices.filter(c=>!c.correct);
  const options=[{text:correctText,correct:true,feedback:base.choices.find(c=>c.correct)!.feedback},...wrong];
  const rotate=variant%3;
- const choices=[...options.slice(rotate),...options.slice(0,rotate)];
- return {...base,id:i+1,chapter:chapter+1,title:base.title+" · "+(variant+1),scenario:situations[variant][1]+". "+base.scenario,customer:prompts[chapter][variant],choices,contextKy:situations[variant][0],contextRu:situations[variant][1],sourceUrl:"https://github.com/adiletgpt6-beep/hidjaz-knowledge-base/blob/main/knowledge/"+sources[chapter],youtubeUrl:null};
+ const choices=[...options.slice(rotate),...options.slice(0,rotate)].map(c=>({...c,feedbackKy:c.correct?explanations[chapter][0]:explanations[chapter][wrong.findIndex(w=>w.text===c.text)+1]}));
+ return {...base,id:i+1,chapter:chapter+1,title:base.title+" · "+(variant+1),titleKy:titles[chapter]+" · "+(variant+1),skillKy:skills[chapter],takeawayKy:explanations[chapter][0],scenario:situations[variant][1]+". "+base.scenario,customer:prompts[chapter][variant],choices,contextKy:situations[variant][0],contextRu:situations[variant][1],sourceUrl:"https://github.com/adiletgpt6-beep/hidjaz-knowledge-base/blob/main/knowledge/"+sources[chapter],youtubeUrl:null};
 });
