@@ -8,3 +8,6 @@
 .languageSwitch button:focus-visible{outline:2px solid #137b66;outline-offset:2px}
 .loginLanguage{display:flex;justify-content:flex-end;margin-bottom:12px}
 @media(max-width:720px){.languageSwitch{padding:3px;gap:1px;border-radius:11px}.languageSwitch button{padding:6px 8px;min-height:34px;font-size:11px}header .headerTitle{min-width:0;line-height:1.35}header .headerRight .xp{white-space:nowrap}}
+
+.sidebarBackdrop{display:none}
+@media(max-width:720px){.sidebarBackdrop{display:block;position:fixed;inset:0;z-index:19;background:rgba(9,22,28,.42);border:0;width:100vw;height:100dvh;cursor:pointer;touch-action:manipulation}.sidebar{height:100dvh;overflow-y:auto;max-width:min(84vw,320px)}}
