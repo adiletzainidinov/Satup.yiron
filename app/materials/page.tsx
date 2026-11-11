@@ -36,6 +36,7 @@ export default function Materials(){
  <button onClick={()=>setZoom(v=>Math.max(70,v-20))} aria-label="Кичирейтүү" style={btn}>−</button>
  <span style={{fontSize:13,minWidth:45,textAlign:"center"}}>{zoom}%</span>
  <button onClick={()=>setZoom(v=>Math.min(180,v+20))} aria-label="Чоңойтуу" style={btn}>+</button>
+ {source&&<a href={source} target="_blank" rel="noopener noreferrer" style={{...btn,textDecoration:"none",color:"#137b66"}}>Толук экран ↗</a>}
  {source&&<a href={source} download={doc.id+".pdf"} style={{...btn,textDecoration:"none",color:"#137b66"}}>PDF ↓</a>}
  </div>
  {available===false?<div style={{padding:"45px 20px",textAlign:"center"}}><p>Документ серверге азырынча жүктөлө элек.</p><p style={{fontSize:13,color:"#687587"}}>PDF файлын телефонуңуздан убактылуу ачсаңыз болот.</p><button style={{...btn,color:"#137b66"}} onClick={()=>fileRef.current?.click()}>PDF ачуу</button><input ref={fileRef} type="file" accept="application/pdf,.pdf" hidden onChange={e=>localFile(e.target.files?.[0])}/></div>:source?<div style={{overflowX:"auto",background:"#e8ecf0",padding:"8px 0",textAlign:"center"}}><iframe key={source+"#"+page+"-"+zoom} title={doc.title} src={source+"#page="+page+"&zoom="+zoom+"&toolbar=1"} style={{width:zoom>100?zoom+"%":"100%",minWidth:zoom>100?600:0,height:"min(78dvh,900px)",border:0,background:"white"}}/></div>:<div style={{padding:40,textAlign:"center"}}>Документ текшерилүүдө…</div>}
