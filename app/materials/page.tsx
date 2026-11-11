@@ -4,8 +4,8 @@ import Link from "next/link";
 import {supabase} from "@/lib/supabase";
 
 const docs=[
- {id:"guide",title:"Сатуу боюнча окуу куралы",path:"/materials/satuu-boyuncha-okuu-kuraly.pdf"},
- {id:"script",title:"Хиджаз Куран — сатуу скрипти",path:"/materials/hidjaz-kuran-satuu-skripti.pdf"}
+ {id:"guide",title:"Сатуу боюнча окуу куралы",path:"https://raw.githubusercontent.com/adiletzainidinov/Satup.yiron/main/satuu_oku_kuraly_22mb.pdf"},
+ {id:"script",title:"Хиджаз Куран — сатуу скрипти",path:"https://raw.githubusercontent.com/adiletzainidinov/Satup.yiron/main/%D0%A5%D0%B8%D0%B4%D0%B6%D0%B0%D0%B7%20%D0%9A%D1%83%D1%80%D0%B0%D0%BD%20%E2%80%94%20%D1%81%D0%B0%D1%82%D1%83%D1%83%20%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D0%B8_261110_002923.pdf"}
 ];
 export default function Materials(){
  const [authorized,setAuthorized]=useState<boolean|null>(null);
