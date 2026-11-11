@@ -30,7 +30,7 @@ function ContinuousPage({pdf,number,zoom}:{pdf:any;number:number;zoom:number}){
     const base=page.getViewport({scale:1});
     setRatio(base.height/base.width);
     const width=Math.max(250,container.clientWidth-12);
-    const scale=(width/base.width)*zoom;
+    const scale=width/base.width;
     const dpr=Math.min(window.devicePixelRatio||1,1.6);
     const viewport=page.getViewport({scale:scale*dpr});
     element.width=Math.ceil(viewport.width);element.height=Math.ceil(viewport.height);
@@ -98,7 +98,7 @@ export default function Materials(){
   {error&&<div role="alert" style={{padding:20,color:"#a43d32"}}>{error}<div style={{marginTop:12}}><button style={btn} onClick={()=>{setAuthorized(false);setTimeout(()=>setAuthorized(true),0)}}>Кайра аракет кылуу</button></div></div>}
   {pdf&&<div style={{background:"#e8ecf0",padding:"12px 6px",overflowX:"auto"}}>
    <div style={{width:zoom>1?Math.round(zoom*100)+"%":"100%",margin:"0 auto"}}>
-    {Array.from({length:pdf.numPages},(_,i)=><ContinuousPage key={active+"-"+(i+1)} pdf={pdf} number={i+1} zoom={1}/>)}
+    {Array.from({length:pdf.numPages},(_,i)=><ContinuousPage key={active+"-"+(i+1)} pdf={pdf} number={i+1} zoom={zoom}/>)}
    </div>
    <p style={{textAlign:"center",padding:"20px 0",color:"#687587",fontSize:14}}>Китептин аягы · {pdf.numPages} бет</p>
   </div>}
